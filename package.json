@@ -1,0 +1,12 @@
+{
+    "name": "web-standard-solution",
+    "version": "1.0.0",
+    "description": "My personal wiki",
+    "main": "index.js",
+    "scripts": {
+        "dev": "vuepress dev docs",
+        "build": "vuepress build docs"
+    },
+    "author": "hiblacker",
+    "license": "ISC"
+}
