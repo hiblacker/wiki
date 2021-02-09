@@ -91,14 +91,7 @@ export default {
             user-select none
         }
         .btn {
-            transition 0.35s
-            &:hover {
-                flex none
-                width 100%
-            }
-        }
-        .btn + .btn {
-            margin-left 10px
+            font-weight bold
         }
     }
     .preview {

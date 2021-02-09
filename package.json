@@ -14,5 +14,9 @@
         "markdown-it-copy": "^1.2.0",
         "pug": "^3.0.0",
         "pug-plain-loader": "^1.1.0"
+    },
+    "dependencies": {
+        "axios": "^0.21.1",
+        "express": "^4.17.1"
     }
 }
