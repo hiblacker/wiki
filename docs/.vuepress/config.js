@@ -26,6 +26,13 @@ module.exports = {
                     { text: "工作流", link: "/tools/workflow/" },
                 ],
             },
+            {
+                text: "文档",
+                ariaLabel: "Language Menu",
+                items: [
+                    { text: "Webpack", link: "https://books.superwen.cn/webpack/" },
+                ],
+            },
             { text: "我的博客", link: "https://superwen.cn" },
         ],
         sidebar: {
