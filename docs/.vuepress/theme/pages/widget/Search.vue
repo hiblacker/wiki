@@ -2,6 +2,7 @@
 .Search
     .input-box
         input(
+            ref='input',
             v-model='query',
             @keyup.enter='search',
             @keyup.up='change',
@@ -35,7 +36,11 @@ export default {
             return url
         },
     },
-    created() {},
+    created() {
+        this.$nextTick(() => {
+            this.$refs.input.focus()
+        })
+    },
     mounted() {},
     methods: {
         search() {
@@ -103,7 +108,7 @@ export default {
         iframe {
             margin 20px 10px
             width 750px
-            height 600px
+            height 800px
         }
     }
 }
