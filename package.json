@@ -1,12 +1,18 @@
 {
-    "name": "web-standard-solution",
+    "name": "vue-press-study",
     "version": "1.0.0",
-    "description": "My personal wiki",
-    "main": "index.js",
     "scripts": {
         "dev": "vuepress dev docs",
-        "build": "vuepress build docs"
+        "build": "vuepress build docs",
+        "build:deploy": "vuepress build docs && scp -r -P 13022 ./docs/.vuepress/dist/* ubuntu@118.89.219.85:/home/www/wiki.superwen.cn"
     },
-    "author": "hiblacker",
-    "license": "ISC"
+    "description": "My wiki",
+    "main": "index.js",
+    "author": "superwen",
+    "license": "MIT",
+    "devDependencies": {
+        "markdown-it-copy": "^1.2.0",
+        "pug": "^3.0.0",
+        "pug-plain-loader": "^1.1.0"
+    }
 }

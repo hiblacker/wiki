@@ -1,11 +1,16 @@
-# 前端标准解决方案
+# Wiki
 
-工作中遇到的问题或者常用且成熟的解决方案汇总整理。以前端为切入点争取做成可以供每个行业的从业者使用的个人 wiki 库。
+## Emoji
 
-## 前端
-类似 wiki，先做一个文档，后续优化搜索功能
+输入
 
-## 后端
-实现搜索、分类、标签、评论
+```
+:tada: :100:
+```
 
-## TODO
+输出
+
+🎉 💯
+
+你可以在[这个列表](https://github.com/markdown-it/markdown-it-emoji/blob/master/lib/data/full.json)找到所有可用的 Emoji。
+

@@ -1,0 +1,54 @@
+$posAbs = 16px
+$font-color = rgba(255, 255, 255, 0.4)
+normal-font-style() {
+    font-family system-ui
+    font-size 12px
+    line-height 18px
+    color $font-color
+}
+normal-style() {
+    top -11px
+    right -6px
+    padding 3px 6px
+    border 0
+    border-radius 3px
+    background none
+    normal-font-style()
+    outline none
+}
+pre {
+    position relative
+}
+.m-mdic-copy-wrapper {
+    position absolute
+    top $posAbs
+    right $posAbs
+    span.u-mdic-copy-code_lang {
+        position absolute
+        top 3px
+        right calc(100% + 4px)
+        normal-font-style()
+    }
+    div.u-mdic-copy-notify {
+        display none
+        position absolute
+        normal-style()
+        top 6px
+        right 12px
+        opacity 1
+        padding-right 4px
+    }
+    button.u-mdic-copy-btn {
+        position relative
+        normal-style()
+        cursor pointer
+        transition color 0.35s
+        &:hover {
+            color rgba(255, 255, 255, 0.6)
+        }
+    }
+}
+// 代码片段的语言
+div[class*='language-']::before {
+    right 6em
+}
