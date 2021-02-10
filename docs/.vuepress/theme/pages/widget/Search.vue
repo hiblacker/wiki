@@ -5,15 +5,12 @@
             ref='input',
             v-model='query',
             @keyup.enter='search',
-            @keyup.up='change',
-            @keyup.down='change',
-            @keyup.left='change',
-            @keyup.right='change'
+            @keyup.down='change'
         )
         .btn-box
             .btn(@click='search') {{ which }}
     .preview(v-if='query && which != "Google"')
-        iframe(:src='`https://baidu.com/s?word=${this.query}`')
+        iframe(:src='searchUrl')
 </template>
 
 <script>
@@ -38,7 +35,7 @@ export default {
     },
     created() {
         this.$nextTick(() => {
-            this.$refs.input.focus()
+            this.$refs.input?.focus()
         })
     },
     mounted() {},
