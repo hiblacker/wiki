@@ -35,9 +35,16 @@ ssh-keygen
 
 测试用的服务器地址为：192.168.225.25
 用户为：root
+需要准备好密码
 
 ```bash
 ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.225.25
+```
+
+默认使用 22 端口，可使用 `-p` 自定义端口：
+
+```bash
+ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.225.25 -p 62322
 ```
 
 上面这条命令是写到服务器上的 ssh 目录下去了
