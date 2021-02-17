@@ -17,7 +17,7 @@ module.exports = {
     themeConfig: {
         nav: [
             { text: "代码片段", link: "/snippets/js/util" },
-            { text: "运维", link: "/DevOps/ssh" },
+            { text: "运维", link: "/DevOps/" },
             {
                 text: "工具",
                 ariaLabel: "Language Menu",
