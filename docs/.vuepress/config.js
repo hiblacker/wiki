@@ -45,8 +45,12 @@ module.exports = {
                     sidebarDepth: 2, // 可选的, 默认值是 1
                     children: [
                         {
-                            title: "util",
+                            title: "JS utils",
                             path: "js/util",
+                        },
+                        {
+                            title: "DOM utils",
+                            path: "js/dom-util",
                         },
                     ],
                 },
