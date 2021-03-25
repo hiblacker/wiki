@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import TurnPlate from '../js/turnplate'
-import Light from '../js/light'
+import TurnPlate from './js/turnplate'
+import Light from './js/light'
 export default {
     name: 'Lotto',
     data() {
