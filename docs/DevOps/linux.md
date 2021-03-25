@@ -77,15 +77,15 @@
 -   [阿里云开源镜像站](http://mirrors.aliyun.com/)
 -   [网易开源镜像站](http://mirrors.163.com/)
 -   [搜狐开源镜像站](http://mirrors.sohu.com/)
--   [北京交通大学](http://mirror.bjtu.edu.cn/) \<教育网荐\>
--   [兰州大学](http://mirror.lzu.edu.cn/) \<西北高校 FTP 搜索引擎\>
+-   [北京交通大学](http://mirror.bjtu.edu.cn/) 教育网荐
+-   [兰州大学](http://mirror.lzu.edu.cn/) 西北高校 FTP 搜索引擎
 -   [厦门大学](http://mirrors.xmu.edu.cn/)
 -   [上海交通大学](http://ftp.sjtu.edu.cn/)
 -   [清华大学](http://mirrors.tuna.tsinghua.edu.cn/)
     -  [清华大学 mirrors6](http://mirrors6.tuna.tsinghua.edu.cn/)
     -  [清华大学 mirrors4](http://mirrors4.tuna.tsinghua.edu.cn/)
 -   [中国科学技术大学](http://mirrors.ustc.edu.cn/)
-    -   [中国科学技术大学 ipv4 <教育网、电信\>](http://ipv4.ustc.edu.cn/)
+    -   [中国科学技术大学 ipv4 教育网、电信](http://ipv4.ustc.edu.cn/)
     -   [中国科学技术大学 ipv6](http://ipv6.ustc.edu.cn/)
 -   [东北大学](http://mirror.neu.edu.cn/)
 -   [浙江大学](http://mirrors.zju.edu.cn/)

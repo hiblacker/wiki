@@ -293,7 +293,9 @@ export default {
     methods: {
         go(command) {
             const c = command.split('(')[0]
-            const url = `https://wangchujiang.com/linux-command/c${this.keyMap[c].p}.html`
+            let url
+            if (!this.keyMap[c]) url = `https://www.runoob.com/linux/linux-comm-${c}.html`
+            else url = `https://wangchujiang.com/linux-command/c${this.keyMap[c].p}.html`
             window.open(url)
         },
     },
