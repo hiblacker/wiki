@@ -1,12 +1,7 @@
 <template lang="pug">
 .Search
     .input-box
-        input(
-            ref='input',
-            v-model='query',
-            @keyup.enter='search',
-            @keyup.down='change'
-        )
+        input(ref='input', v-model='query', @keyup.enter='search', @keyup.down='change')
         .btn-box
             .btn(@click='search') {{ which }}
     .preview(v-if='query && which != "Google"')
@@ -33,12 +28,11 @@ export default {
             return url
         },
     },
-    created() {
+    mounted() {
         this.$nextTick(() => {
             this.$refs.input?.focus()
         })
     },
-    mounted() {},
     methods: {
         search() {
             if (!this.query) return
