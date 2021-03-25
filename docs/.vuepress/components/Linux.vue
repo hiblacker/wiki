@@ -6,7 +6,7 @@
                 a.header-anchor(:href='`#${i.name}`') #
                 | {{ i.name }}
             p.collect
-                span.command(v-for='j in i.keys', @click='go(j)') {{ j }}
+                span.command(v-for='j in i.keys', :key='j', @click='go(j)') {{ j }}
 </template>
 
 <script>
