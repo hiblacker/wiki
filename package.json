@@ -16,6 +16,7 @@
         "pug-plain-loader": "^1.1.0"
     },
     "dependencies": {
+        "ant-design-vue": "^1.7.4",
         "axios": "^0.21.1",
         "express": "^4.17.1"
     }

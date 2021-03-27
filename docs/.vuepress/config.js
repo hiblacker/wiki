@@ -1,6 +1,6 @@
 module.exports = {
-    title: "Superwen's wiki",
-    description: "Superwen's wiki",
+    title: "向死而生",
+    description: "向内而求，向死而生",
     head: [['link', { rel: 'icon', href: '/ico.ico' }]],
     port: 6688,
     markdown: {

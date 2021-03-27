@@ -1,20 +1,23 @@
 <template lang="pug">
 .Home
     Search
-    iframe.dida(src='https://dida365.com/webapp')
+    //- iframe.dida(src='https://dida365.com/webapp')
+    Navigation
 </template>
 
 <script>
 import Search from './widget/Search'
+import Navigation from './widget/Navigation'
 export default {
     name: 'Home',
-    components: { Search },
+    components: { Search, Navigation },
 }
 </script>
 
 <style scoped lang="stylus">
 .Home {
     padding-top 5rem
+    // background #f8f8f8
     .dida {
         width 380px
         height 660px
