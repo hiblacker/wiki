@@ -17,7 +17,8 @@ export default {
 <style scoped lang="stylus">
 .Home {
     padding-top 5rem
-    // background #f8f8f8
+    background #f3f3f3
+    min-height 100vh
     .dida {
         width 380px
         height 660px

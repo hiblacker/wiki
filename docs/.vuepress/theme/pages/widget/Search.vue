@@ -12,7 +12,7 @@
         .btn-box
             .btn(@click='search') {{ which }}
         transition(name='fade')
-            .suggestion(v-if='query')
+            .suggestion(v-if='suggestions.length')
                 .item(v-for='i in suggestions', :key='i', @click='(query = i), search()') {{ i }}
     //- .preview(v-if='query && which != "Google"')
     //-     iframe(:src='searchUrl')

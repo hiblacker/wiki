@@ -4,10 +4,18 @@
         h3.title 文档
         .navs
             a.nav(v-for='i in docs', :key='i.url', :href='i.url')
-                img.icon(:src='i.icon')
                 .info
+                    img.icon(:src='i.icon')
                     .tit {{ i.name }}
-                    .desc {{ i.desc }}
+                .desc {{ i.desc }}
+    .group
+        h3.title 个人
+        .navs
+            a.nav(v-for='i in personal', :key='i.url', :href='i.url')
+                .info
+                    img.icon(:src='i.icon')
+                    .tit {{ i.name }}
+                .desc {{ i.desc }}
 </template>
 
 <script>
@@ -43,6 +51,27 @@ export default {
                     icon:
                         'https://cdn.superwen.cn/halo/cf23526f451784ff137f161b8fe18d5a.png',
                 },
+                {
+                    name: 'Vite',
+                    desc: '下一代前端开发与构建工具下一代前端开发与构建工具下一代前端开发与构建工具',
+                    url: 'https://cn.vitejs.dev/',
+                    icon: 'https://cdn.superwen.cn/wiki/vite.svg',
+                },
+                {
+                    name: '企业微信SDK文档',
+                    desc: '企业微信API',
+                    url: 'https://work.weixin.qq.com/api/doc/90000/90136/90512',
+                    icon: 'https://cdn.superwen.cn/assets/wecom.webp',
+                },
+            ],
+            personal: [
+                {
+                    name: '又拍云文件管理',
+                    desc: '又拍云上传文件',
+                    url: 'https://console.upyun.com/services/superwen-blog/filemanage/',
+                    icon:
+                        'https://cdn.superwen.cn/halo/3d19c9fa280df94f157c43c7a18f9de9.jpg',
+                },
             ],
         }
     },
@@ -51,41 +80,51 @@ export default {
 
 <style scoped lang="stylus">
 .Navigation {
-    margin-top 20px
+    margin 60px auto 0
     .group {
-        padding 20px
-        max-width 1000px
+        background #f9f9f9
+        margin 0 auto
+        padding 20px 20px 40px
+        margin-top 20px
+        max-width 1024px
+        border-radius 8px
         .title {
-            margin-bottom 0
+            margin 0
         }
         .navs {
             display flex
             flex-wrap wrap
             .nav {
+                background #fff
                 flex none
                 min-width 88px
                 color #444
                 border-radius 3px
                 box-shadow 1px 1px 2px rgba(8, 8, 8, 0.2)
-                display flex
-                align-items center
                 padding 10px
                 margin-right 15px
                 margin-top 20px
-                width 200px
-                .icon {
-                    width 40px
-                }
+                width 180px
                 .info {
-                    margin-left 10px
+                    display flex
+                    align-items center
+                    .icon {
+                        width 30px
+                        align-self flex-start
+                    }
                     .tit {
-                        font-size 16px
+                        font-size 14px
+                        margin-left 10px
                     }
-                    .desc {
-                        font-size 12px
-                        color #888
-                        margin-top 6px
-                    }
+                }
+                .desc {
+                    padding 0 0 3px
+                    font-size 12px
+                    color #888
+                    margin-top 6px
+                    overflow hidden
+                    text-overflow ellipsis
+                    white-space nowrap
                 }
             }
         }
