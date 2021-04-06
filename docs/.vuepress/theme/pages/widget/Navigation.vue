@@ -1,13 +1,13 @@
 <template lang="pug">
 .Navigation
     .group(v-for='item in groups', :key='item.title')
-        h3.title {{ item.title }}
+        h3.title(v-if='item.title') {{ item.title }}
         .navs
             a.nav(v-for='i in item.navs', :key='i.url', :href='i.url')
                 .info
                     img.icon(:src='i.icon')
                     .tit {{ i.name }}
-                .desc {{ i.desc }}
+                .desc(v-if='i.desc') {{ i.desc }}
 </template>
 
 <script>
@@ -42,20 +42,7 @@ export default {
                     ],
                 },
                 {
-                    title: '个人',
-                    navs: [
-                        {
-                            name: '又拍云文件管理',
-                            desc: '又拍云上传文件',
-                            url:
-                                'https://console.upyun.com/services/superwen-blog/filemanage/',
-                            icon:
-                                'https://cdn.superwen.cn/halo/3d19c9fa280df94f157c43c7a18f9de9.jpg',
-                        },
-                    ],
-                },
-                {
-                    title: 'Vue',
+                    title: '文档 - Vue',
                     navs: [
                         {
                             name: 'Vue.js',
@@ -95,8 +82,38 @@ export default {
                             name: 'Element',
                             desc: '基于 Vue 2.0 的桌面端组件库',
                             url:
-                                'https://element.eleme.cn/2.0/#/zh-CN/component/installation',
+                                'https://element.eleme.cn/2.15/#/zh-CN/component/installation',
                             icon: base64s.element,
+                        },
+                        {
+                            name: 'Element next',
+                            desc: '基于 Vue 3.0 的桌面端组件库',
+                            url:
+                                'https://element-plus.org/#/zh-CN/component/installation',
+                            icon: base64s.element,
+                        },
+                    ],
+                },
+                {
+                    title: '个人',
+                    navs: [
+                        {
+                            name: '又拍云文件管理',
+                            desc: '又拍云上传文件',
+                            url:
+                                'https://console.upyun.com/services/superwen-blog/filemanage/',
+                            icon:
+                                'https://cdn.superwen.cn/halo/3d19c9fa280df94f157c43c7a18f9de9.jpg',
+                        },
+                    ],
+                },
+                {
+                    navs: [
+                        {
+                            name: 'Stylus',
+                            url: 'https://stylus.bootcss.com/',
+                            icon:
+                                'https://cdn.superwen.cn/halo/68c78ec3a7e25615d65041aec08fe9c6.png',
                         },
                     ],
                 },
