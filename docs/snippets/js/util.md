@@ -96,3 +96,24 @@ function getTextWith(text, fontStyle = '16px') {
 var textWidth = getTextWith('This is my dog!', '14px/1.6 "Microsoft Yahei"')
 console.log(textWidth)
 ```
+
+## 获取 URL 参数
+
+```js
+/**
+ * 获取url全部参数
+ * @return {Object}
+ */
+export function getUrlVars() {
+    var vars= {},
+        hash
+    var hashes = window.location.href
+        .slice(window.location.href.indexOf('?') + 1)
+        .split('&')
+    for (var i = 0; i < hashes.length; i++) {
+        hash = hashes[i].split('=')
+        vars[hash[0]] = hash[1]
+    }
+    return vars
+}
+```
