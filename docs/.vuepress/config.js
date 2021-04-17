@@ -53,7 +53,7 @@ module.exports = {
                     path: '/snippets/js/util', // 可选的, 标题的跳转链接，应为绝对路径且必须存在
                     // collapsable: false, // 可选的, 默认值是 true,
                     sidebarDepth: 2, // 可选的, 默认值是 1
-                    children: ['js/util', 'js/dom-util', 'js/canvas'],
+                    children: ['js/util', 'js/dom-util', 'js/object', 'js/canvas'],
                 },
             ],
             '/tools/blog/': ['/tools/blog/VuePress'],
