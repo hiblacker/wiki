@@ -3,7 +3,11 @@
 ## isValid: 有效值
 
 ```js
-export function isValid(val) {
+/**
+ * 有效值
+ * @param {any} val 要判断的值
+ */
+export function isValid(val: any): Boolean {
     return !!val || val === 0
 }
 ```
@@ -26,12 +30,13 @@ export function isValid(val) {
  * // => { 'a': 1, 'c': 3 }
  */
 
-export function pick(obj, keys) {
-    return keys.reduce(
-        (acc, cur) => (isValid(obj[cur]) && (acc[cur] = obj[cur]), acc),
-        {}
-    )
+interface Obj {
+    [key: string]: any
 }
+export function pick(obj: Obj, keys: string[]): object {
+    return keys.reduce((acc, cur) => (isValid(obj[cur]) && (acc[cur] = obj[cur]), acc), {} as Obj)
+}
+
 ```
 
 ## omit: 忽略属性，返回新对象
@@ -52,7 +57,7 @@ export function pick(obj, keys) {
  * // => { 'b': '2' }
  */
 
-export function omit(obj, keys) {
-    return keys.reduce((acc, cur) => (delete acc[cur], acc), { ...obj })
+export function omit(obj: object, keys: string[]): object {
+    return keys.reduce((acc, cur) => (delete acc[cur], acc), { ...obj } as { [key: string]: any })
 }
 ```
