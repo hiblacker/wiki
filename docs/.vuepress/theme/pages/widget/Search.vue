@@ -89,7 +89,7 @@ export default {
         },
         search() {
             if (!this.query) return
-            window.open(this.searchUrl)
+            location.href = this.searchUrl
             this.suggestions = []
         },
         change() {
