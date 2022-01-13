@@ -1,8 +1,9 @@
 <template lang="pug">
 .Home
     Search
-    //- iframe.dida(src='https://dida365.com/webapp')
-    Navigation
+    .box
+        iframe.dida(src='https://dida365.com/webapp')
+        Navigation.box-nav
 </template>
 
 <script>
@@ -19,12 +20,22 @@ export default {
     padding-top 5rem
     background #f3f3f3
     min-height 100vh
+    .box {
+        display flex
+        margin-top 20px
+        justify-content center
+    }
     .dida {
+        margin 0 10px
         width 380px
         height 660px
         border 0
-        box-shadow 2px 3px 15px rgba(8, 8, 8, 0.5)
+        box-shadow 1px 1px 4px rgba(8, 8, 8, 0.1)
         border-radius 10px
+    }
+    .box-nav {
+        margin 0 10px
+        min-width 480px
     }
 }
 </style>

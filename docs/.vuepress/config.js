@@ -1,6 +1,6 @@
 module.exports = {
-    title: "Hello World",
-    description: "向内而求，向死而生",
+    title: 'Hello World',
+    description: '向内而求，向死而生',
     head: [['link', { rel: 'icon', href: '/ico.ico' }]],
     port: 6688,
     markdown: {
@@ -16,7 +16,11 @@ module.exports = {
     },
     themeConfig: {
         nav: [
+            { text: '知识体系', link: '/list/' },
+            { text: '前端技术', link: '/web/' },
+            { text: '解决方案', link: '/solution/' },
             { text: '代码片段', link: '/snippets/js/util' },
+            { text: '工程化', link: '/project/' },
             { text: '运维', link: '/DevOps/' },
             {
                 text: '工具',
@@ -35,6 +39,9 @@ module.exports = {
             { text: '我的博客', link: 'https://superwen.cn' },
         ],
         sidebar: {
+            '/project/': ['nvm'],
+            '/web/': ['qiankun'],
+            '/solution/': ['mobile'],
             '/DevOps/': [
                 'ssh',
                 'npm-scripts-deploy',

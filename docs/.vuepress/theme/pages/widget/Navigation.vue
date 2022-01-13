@@ -1,7 +1,7 @@
 <template lang="pug">
 .Navigation
     .group(v-for='item in groups', :key='item.title')
-        h3.title(v-if='item.title') {{ item.title }}
+        h4.title(v-if='item.title') {{ item.title }}
         .navs
             a.nav(v-for='i in item.navs', :key='i.url', :href='i.url')
                 .info
@@ -47,8 +47,13 @@ export default {
                             icon: 'https://cdn.superwen.cn/halo/cf23526f451784ff137f161b8fe18d5a.png',
                         },
                         {
-                            name: 'Vue 3',
-                            url: 'https://v3.cn.vuejs.org/guide/introduction.html',
+                            name: 'Vue Router',
+                            url: 'https://router.vuejs.org/zh/guide/',
+                            icon: 'https://cdn.superwen.cn/halo/cf23526f451784ff137f161b8fe18d5a.png',
+                        },
+                        {
+                            name: 'Vuex',
+                            url: 'https://vuex.vuejs.org/zh/',
                             icon: 'https://cdn.superwen.cn/halo/cf23526f451784ff137f161b8fe18d5a.png',
                         },
                         {
@@ -57,19 +62,39 @@ export default {
                             icon: 'https://cdn.superwen.cn/wiki/uni-app.jpg',
                         },
                         {
+                            name: 'Element UI',
+                            url: 'https://element.eleme.cn/2.15/#/zh-CN/component/installation',
+                            icon: base64s.element,
+                        },
+                        {
+                            name: 'Muse-UI',
+                            url: 'https://muse-ui.org/#/zh-CN/installation',
+                            icon: 'https://cdn.superwen.cn/halo/a76a122f14523bd8345bd658d172004c.png',
+                        },
+                        {
+                            name: 'Vue CLI',
+                            url: 'https://cli.vuejs.org/zh/guide/',
+                            emoji: '🛠️',
+                        },
+                    ],
+                },
+                {
+                    title: '文档 - Vue 3',
+                    navs: [
+                        {
+                            name: 'Vue 3',
+                            url: 'https://v3.cn.vuejs.org/guide/introduction.html',
+                            icon: 'https://cdn.superwen.cn/halo/cf23526f451784ff137f161b8fe18d5a.png',
+                        },
+                        {
                             name: 'Vuex next',
                             url: 'https://next.vuex.vuejs.org/guide/',
                             icon: 'https://cdn.superwen.cn/halo/d656dee3067a5664f6ad3efcb31f509b.png',
                         },
                         {
-                            name: 'Vite',
-                            url: 'https://cn.vitejs.dev/',
-                            icon: 'https://cdn.superwen.cn/wiki/vite.svg',
-                        },
-                        {
-                            name: 'Element',
-                            url: 'https://element.eleme.cn/2.15/#/zh-CN/component/installation',
-                            icon: base64s.element,
+                            name: 'Vuex Router next',
+                            url: 'https://next.router.vuejs.org/zh/guide/',
+                            icon: 'https://cdn.superwen.cn/halo/cf23526f451784ff137f161b8fe18d5a.png',
                         },
                         {
                             name: 'Element next',
@@ -77,9 +102,9 @@ export default {
                             icon: base64s.element,
                         },
                         {
-                            name: 'Vue CLI',
-                            url: 'https://cli.vuejs.org/zh/guide/',
-                            emoji: '🛠️',
+                            name: 'Vite',
+                            url: 'https://cn.vitejs.dev/',
+                            icon: 'https://cdn.superwen.cn/wiki/vite.svg',
                         },
                     ],
                 },
@@ -110,14 +135,14 @@ export default {
 
 <style scoped lang="stylus">
 .Navigation {
-    margin 60px auto 0
     .group {
-        background #f9f9f9
+        background #fff
         margin 0 auto
         padding 20px 20px 40px
-        margin-top 20px
+        margin-bottom 20px
         max-width 1024px
         border-radius 8px
+        box-shadow 1px 1px 4px rgba(8, 8, 8, 0.1)
         .title {
             margin 0
         }
@@ -130,20 +155,25 @@ export default {
                 // min-width 88px
                 color #444
                 border-radius 3px
-                box-shadow 1px 1px 2px rgba(8, 8, 8, 0.2)
-                padding 10px 20px
+                box-shadow 0px 0px 4px rgba(8, 8, 8, 0.1)
+                padding 8px 10px
                 margin-right 15px
                 margin-top 20px
-                // width 180px
+                transition .35s
+                &:hover {
+                    transform translateY(-2px)
+                    box-shadow 0px 0px 4px rgba(8, 8, 8, 0.2)
+                }
                 .emoji {
                     font-style normal
-                    font-size 22px
+                    font-size 12px
                 }
                 .info {
                     display flex
                     align-items center
                     .icon {
-                        width 30px
+                        width 20px
+                        height 20px
                         align-self flex-start
                     }
                     .tit {
