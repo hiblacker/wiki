@@ -22,7 +22,7 @@ export default {
     min-height 100vh
     .box {
         display flex
-        margin-top 20px
+        margin-top 50px
         justify-content center
     }
     .dida {
