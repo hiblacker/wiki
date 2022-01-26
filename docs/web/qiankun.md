@@ -1,11 +1,11 @@
 # qiankun
 
-### 什么是微前端
+## 什么是微前端
 
 微前端为什么叫做微前端？主要是相对服务端的微服务来说的，微服务是将大型应用拆分为更小的独立服务，而微前端，可以理解为可以
 被动态加载的前端模块资源。这个范围比较广，可以认为是广义的微前端。
 
-### 为什么要做微前端
+## 为什么要做微前端
 
 实际上对于这个最基本的问题，答案就不止一个。微前端的鼻祖 Single-spa 最初要解决的问题是，在老项目中使用新的前端技术栈，那
 到现阶段，蚂蚁金服微前端框架 Qiankun 所声明的微前端想要解决的另一个主要问题是，**巨石工程的维护困难和协作开发困难**。而
@@ -13,7 +13,7 @@
 也是我所认为的狭义微前端范围。而相对应的广义微前端范围的问题还包括组件或者说模块的动态引用（运行时加载），粒度相对比较小
 ，并不是以系统层面的拆分为目的，反而是以整合为目的。
 
-### 微前端怎么做？
+## 微前端怎么做？
 
 使用阿里 [qiankun](https://qiankun.umijs.org/zh) 解决方案。
 
@@ -145,16 +145,23 @@ export default {
 ## Vuex：子应用使用主应用 store
 
 store 状态应尽量放在子应用中独立管理，主应用中只存放全局状态，以便多方调用。也就是只有需要跨子应用调用的状态，才应该放到
-主应用中。可参考如下 3 步：
+主应用中。可参考：
 
-1. 主应用的 store 挂载在 window 对象，所以可以直接访问：
+### 主应用的 store 挂载到 window 对象：
+
+```js
+import store from '@/store'
+window.STORE = store
+```
+
+在子应用内使用：
 
 ```js
 export default {
     name: 'app',
     created() {
         // state
-        STORE.state.app.userInfo
+        this.userInfo = STORE.state.app.userInfo
         // commit
         STORE.commit('app/SET_USERINFO')
         // dispatch
@@ -163,7 +170,60 @@ export default {
 }
 ```
 
-2. 简写。像 `mapState` 一样简写。
+这样虽然可以使用，但是如果将 state 绑定到子应用的视图上，当状态 state 变更时，子应用的视图无法获得更新。
+
+我们可以通过 Vue 的 api 来将 state 变的可响应：
+
+```js
+Vue.observable(window.STORE)
+```
+
+这样主应用的 state 变化时，子应用的视图得以更新。
+
+但这样会有一个很严重的问题，主应用的 state 的依赖 dep 会被覆盖掉导致主应用的依赖 state 的视图无法获得响应式更新。
+
+为了解决这个问题，我们可以通过 vuex 提供的插件能力，来独立维护一棵 state 树：
+
+```js
+import _ from 'lodash'
+// 为子应用提供状态驱动，手动维护状态树，避免子应用使用observable后覆盖主应用的状态订阅
+const subStore = store => {
+    window.STORE_STATE.state = _.cloneDeep(store.state)
+    let timer
+    // 当 store 初始化后调用
+    store.subscribe((mutation, state) => {
+        const action = mutation.type.split('/')
+        if (!action?.[0]) return console.warn('[vuex subStore] mutation错误', mutation)
+        // 全局mutation
+        if (action.length === 1) {
+            const actionMutation = action[0]
+            modules.mutations[actionMutation](STORE_STATE.state, _.cloneDeep(mutation.payload))
+        }
+        // 模块下的操作
+        if (action.length > 1) {
+            const actionModule = action[0]
+            const actionMutation = action[1]
+            if (!STORE_STATE.state[actionModule]) STORE_STATE.state[actionModule] = {}
+            modules[actionModule].mutations[actionMutation](STORE_STATE.state[actionModule], _.cloneDeep(mutation.payload))
+        }
+    })
+}
+// 注册到vuex中
+const store = new Vuex.Store({
+    modules,
+    plugins: [subStore],
+})
+```
+
+然后修改子应用的观测对象
+
+```js
+Vue.observable(window.STORE_STATE)
+```
+
+至此，父子应用的共享状态树相互独立，互不影响。
+
+### 简写。像 `mapState` 一样简写。
 
 ```js
 export default {
@@ -171,7 +231,7 @@ export default {
     computed: {
         // 正常简写
         userInfo() {
-            return STORE.state.app.userInfo
+            return STORE_STATE.state.app.userInfo
         }
         // 像 mapState 一样, 需要引入下面的 mapFatherState 方法
         ...mapFatherState('app', ['userInfo']),
@@ -187,27 +247,19 @@ export default {
  * ...mapFatherState(['param']),
  */
 export function mapFatherState(namespace, states) {
-    const warn = tip => console.warn(`[mapFatherState] ${tip}`)
-    if (!namespace || !Array.isArray(states)) {
-        warn('传参错误')
+    const warn = (...tip) => console.warn('[mapFatherState]', ...tip)
+    const isArray = Array.isArray(namespace)
+    if (!namespace || !states && !isArray) {
+        warn('传参错误', ...arguments)
         return {}
     }
-    const isArray = Array.isArray(namespace)
-    if (!isArray && !STORE.state[namespace]) {
+    if (!isArray && !STORE_STATE.state[namespace]) {
         warn(`namespace ${namespace} 不存在`)
         return {}
     }
-    return states.reduce((acc, cur) => ((acc[cur] = () => isArray ? STORE.state[cur] : STORE.state[namespace][cur]), acc), {})
+    let arr = isArray ? namespace : states
+    return arr.reduce((acc, cur) => ((acc[cur] = () => isArray ? STORE_STATE.state[cur] : STORE_STATE.state[namespace][cur]), acc), {})
 }
-```
-
-3. 让状态变成响应式。
-
-也就是现在的 state 状态修改，视图不会重新渲染，需要如下操作让状态响应。
-
-```js
-// 在 main.js 入口文件中
-Vue.observable(STORE)
 ```
 
 ## Q&A

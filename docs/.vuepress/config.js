@@ -40,7 +40,7 @@ module.exports = {
         ],
         sidebar: {
             '/project/': ['nvm'],
-            '/web/': ['qiankun'],
+            '/web/': ['qiankun', 'comments'],
             '/solution/': ['mobile'],
             '/DevOps/': [
                 'ssh',
