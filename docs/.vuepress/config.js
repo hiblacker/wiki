@@ -34,7 +34,10 @@ module.exports = {
             {
                 text: '文档',
                 ariaLabel: 'Language Menu',
-                items: [{ text: 'Webpack', link: 'https://books.superwen.cn/webpack/' }],
+                items: [
+                    { text: 'Webpack', link: 'https://books.superwen.cn/webpack/' },
+                    { text: '十大经典算法', link: '/algorithm/' },
+                ],
             },
             { text: '我的博客', link: 'https://superwen.cn' },
         ],
@@ -66,6 +69,18 @@ module.exports = {
             '/tools/blog/': ['/tools/blog/VuePress'],
             '/tools/workflow/': ['/tools/workflow/image-uploader'],
             '/tools/git/': ['/tools/git/git'],
+            '/algorithm/': [
+                '/algorithm/1.bubbleSort',
+                '/algorithm/2.selectionSort',
+                '/algorithm/3.insertionSort',
+                '/algorithm/4.shellSort',
+                '/algorithm/5.mergeSort',
+                '/algorithm/6.quickSort',
+                '/algorithm/7.heapSort',
+                '/algorithm/8.countingSort',
+                '/algorithm/9.bucketSort',
+                '/algorithm/10.radixSort',
+            ],
         },
     },
 }
