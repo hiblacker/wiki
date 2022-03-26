@@ -13,7 +13,8 @@
     "devDependencies": {
         "markdown-it-copy": "^1.2.0",
         "pug": "^3.0.0",
-        "pug-plain-loader": "^1.1.0"
+        "pug-plain-loader": "^1.1.0",
+        "vuepress": "^1.9.5"
     },
     "dependencies": {
         "ant-design-vue": "^1.7.4",
