@@ -33,7 +33,7 @@
 
 <script>
 import Home from '@theme/pages/home.vue'
-import Navbar from '@parent-theme/components/Navbar.vue'
+import Navbar from './Navbar.vue'
 import Page from '@parent-theme/components/Page.vue'
 import Sidebar from '@parent-theme/components/Sidebar.vue'
 import { resolveSidebarItems } from '@parent-theme/util'
