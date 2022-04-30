@@ -17,10 +17,11 @@
 你可以在[这个列表](https://github.com/markdown-it/markdown-it-emoji/blob/master/lib/data/full.json)找到所有可用的 Emoji。
 
 ### 侧边栏标题深度
+最大2
 
 ```
 ---
-sidebarDepth: 3
+sidebarDepth: 2
 ---
 ```
 

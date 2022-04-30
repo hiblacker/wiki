@@ -16,7 +16,7 @@ module.exports = {
     },
     themeConfig: {
         nav: [
-            { text: '知识体系', link: '/list/' },
+            { text: '知识体系', link: '/outline/' },
             { text: '前端技术', link: '/web/' },
             { text: '解决方案', link: '/solution/' },
             { text: '代码片段', link: '/snippets/js/util' },
@@ -29,6 +29,7 @@ module.exports = {
                     { text: '博客搭建', link: '/tools/blog/' },
                     { text: '工作流', link: '/tools/workflow/' },
                     { text: 'Git', link: '/tools/git/' },
+                    { text: 'NVM', link: '/tools/nvm' },
                 ],
             },
             {
@@ -42,9 +43,9 @@ module.exports = {
             { text: '我的博客', link: 'https://superwen.cn' },
         ],
         sidebar: {
-            '/project/': ['nvm'],
+            '/project/': [],
             '/web/': ['qiankun', 'comments'],
-            '/solution/': ['mobile', 'questions/m1-node'],
+            '/solution/': ['mobile', 'questions/m1-node', 'node-choose'],
             '/DevOps/': [
                 'ssh',
                 'npm-scripts-deploy',
@@ -70,6 +71,7 @@ module.exports = {
             '/tools/workflow/': ['/tools/workflow/image-uploader'],
             '/tools/git/': ['/tools/git/git'],
             '/algorithm/': [
+                '/algorithm/',
                 '/algorithm/1.bubbleSort',
                 '/algorithm/2.selectionSort',
                 '/algorithm/3.insertionSort',
