@@ -69,20 +69,8 @@ export default {
             return this.algolia && this.algolia.apiKey && this.algolia.indexName
         },
     },
-    created() {
-        const script = document.createElement('script')
-        script.src = 'https://sdk.jinrishici.com/v2/browser/jinrishici.js'
-        document.head.appendChild(script)
-        script.onload = () => {
-            jinrishici.load(result => {
-                this.word = result.data.content
-                this.$nextTick(() => {
-                    this.resize()
-                })
-            })
-        }
-    },
     mounted() {
+        this.loadPoetry()
         this.NAVBAR_VERTICAL_PADDING =
             parseInt(css(this.$el, 'paddingLeft')) +
             parseInt(css(this.$el, 'paddingRight'))
@@ -90,6 +78,19 @@ export default {
         window.addEventListener('resize', () => this.resize(), false)
     },
     methods: {
+        loadPoetry() {
+            const script = document.createElement('script')
+            script.src = 'https://sdk.jinrishici.com/v2/browser/jinrishici.js'
+            document.head.appendChild(script)
+            script.onload = () => {
+                jinrishici.load(result => {
+                    this.word = result.data.content
+                    this.$nextTick(() => {
+                        this.resize()
+                    })
+                })
+            }
+        },
         resize() {
             if (document.documentElement.clientWidth < this.MOBILE_DESKTOP_BREAKPOINT) {
                 this.linksWrapMaxWidth = null
@@ -130,6 +131,7 @@ $navbar-horizontal-padding = 1.5rem
         font-weight 600
         color $textColor
         position relative
+        font-family Xingkai SC, STKaiti
         &::after {
             content ''
             position absolute
@@ -156,7 +158,7 @@ $navbar-horizontal-padding = 1.5rem
         right $navbar-horizontal-padding
         top $navbar-vertical-padding
         display flex
-        transition .35s
+        transition 0.35s
         .search-box {
             flex 0 0 auto
             vertical-align top
