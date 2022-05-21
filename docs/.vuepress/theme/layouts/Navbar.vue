@@ -1,48 +1,25 @@
-<template>
-    <header class="navbar">
-        <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')" />
-
-        <RouterLink :to="$localePath" class="home-link">
-            <img
-                v-if="$site.themeConfig.logo"
-                class="logo"
-                :src="$withBase($site.themeConfig.logo)"
-                :alt="$siteTitle"
-            />
-            <span
-                v-if="$siteTitle"
-                ref="siteName"
-                class="site-name"
-                :class="{ 'can-hide': $site.themeConfig.logo, ok: word }"
-                >{{ word }}</span
-            >
-        </RouterLink>
-
-        <div
-            class="links"
-            :style="
-                linksWrapMaxWidth
-                    ? {
-                          'max-width': linksWrapMaxWidth + 'px',
-                      }
-                    : {}
-            "
-        >
-            <AlgoliaSearchBox v-if="isAlgoliaSearch" :options="algolia" />
-            <SearchBox
-                v-else-if="
-                    $site.themeConfig.search !== false &&
-                    $page.frontmatter.search !== false
-                "
-            />
-            <NavLinks class="can-hide" />
-        </div>
-    </header>
+<template lang="pug">
+header.navbar
+    SidebarButton(@toggle-sidebar='$emit("toggle-sidebar")')
+    RouterLink.home-link(:to='$localePath')
+        img.logo(
+            v-if='$site.themeConfig.logo',
+            :alt='$siteTitle',
+            :src='$withBase($site.themeConfig.logo)'
+        )
+        Slogan(v-if='$siteTitle', @resize='resize', ref='siteName')
+    .links(:style='linksWrapMaxWidth ? { "max-width": linksWrapMaxWidth + "px" } : {}')
+        AlgoliaSearchBox(v-if='isAlgoliaSearch', :options='algolia')
+        SearchBox(
+            v-else-if='$site.themeConfig.search !== false && $page.frontmatter.search !== false'
+        )
+        NavLinks.can-hide
 </template>
 
 <script>
 import AlgoliaSearchBox from '@AlgoliaSearchBox'
 import SearchBox from '@SearchBox'
+import Slogan from './widget/Slogan.vue'
 import SidebarButton from '@parent-theme/components/SidebarButton.vue'
 import NavLinks from '@parent-theme/components/NavLinks.vue'
 export default {
@@ -50,13 +27,13 @@ export default {
     components: {
         SidebarButton,
         NavLinks,
+        Slogan,
         SearchBox,
         AlgoliaSearchBox,
     },
     data() {
         return {
             linksWrapMaxWidth: null,
-            word: '',
             MOBILE_DESKTOP_BREAKPOINT: 719,
             NAVBAR_VERTICAL_PADDING: 719,
         }
@@ -70,44 +47,33 @@ export default {
         },
     },
     mounted() {
-        this.loadPoetry()
-        this.NAVBAR_VERTICAL_PADDING =
-            parseInt(css(this.$el, 'paddingLeft')) +
-            parseInt(css(this.$el, 'paddingRight'))
+        this.sizeCalc()
         this.resize()
         window.addEventListener('resize', () => this.resize(), false)
     },
     methods: {
-        loadPoetry() {
-            const script = document.createElement('script')
-            script.src = 'https://sdk.jinrishici.com/v2/browser/jinrishici.js'
-            document.head.appendChild(script)
-            script.onload = () => {
-                jinrishici.load(result => {
-                    this.word = result.data.content
-                    this.$nextTick(() => {
-                        this.resize()
-                    })
-                })
+        sizeCalc() {
+            this.NAVBAR_VERTICAL_PADDING =
+                parseInt(css(this.$el, 'paddingLeft')) +
+                parseInt(css(this.$el, 'paddingRight'))
+            function css(el, property) {
+                // NOTE: Known bug, will return 'auto' if style value is 'auto'
+                const win = el.ownerDocument.defaultView
+                // null means not to return pseudo styles
+                return win.getComputedStyle(el, null)[property]
             }
         },
         resize() {
             if (document.documentElement.clientWidth < this.MOBILE_DESKTOP_BREAKPOINT) {
                 this.linksWrapMaxWidth = null
             } else {
+                const logo = this.$refs.siteName.$el
+                const logoWidth = logo && logo.offsetWidth
                 this.linksWrapMaxWidth =
-                    this.$el.offsetWidth -
-                    this.NAVBAR_VERTICAL_PADDING -
-                    ((this.$refs.siteName && this.$refs.siteName.offsetWidth) || 0)
+                    this.$el.offsetWidth - this.NAVBAR_VERTICAL_PADDING - (logoWidth || 0)
             }
         },
     },
-}
-function css(el, property) {
-    // NOTE: Known bug, will return 'auto' if style value is 'auto'
-    const win = el.ownerDocument.defaultView
-    // null means not to return pseudo styles
-    return win.getComputedStyle(el, null)[property]
 }
 </script>
 
@@ -126,30 +92,8 @@ $navbar-horizontal-padding = 1.5rem
         margin-right 0.8rem
         vertical-align top
     }
-    .site-name {
-        font-size 1.1rem
-        font-weight 600
-        color $textColor
-        position relative
-        font-family Xingkai SC, STKaiti
-        &::after {
-            content ''
-            position absolute
-            left 0
-            top 0
-            bottom 0
-            right 0
-            background #fff
-            transition 2s cubic-bezier(0.29, 1, 0.29, 1)
-            transform scale(1)
-            transform-origin right center
-        }
-        &.ok::after {
-            transform scale(0, 1)
-        }
-    }
     .links {
-        padding-left 1.5rem
+        margin-left 1.5rem
         box-sizing border-box
         background-color white
         white-space nowrap
