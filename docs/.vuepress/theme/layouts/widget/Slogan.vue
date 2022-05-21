@@ -57,12 +57,14 @@ export default {
             this.$nextTick(() => this.checkMaxWidth())
         },
         checkMaxWidth() {
-            const data = this.poetry
+            const data = Array.from(this.poetry.content)
+            data.push(this.poetry.title)
             const showLength = this.word.length
-            const maxLength = data.content.reduce(
+            const maxLength = data.reduce(
                 (acc, cur) => (cur.length > acc ? cur.length : acc),
                 showLength
             )
+            // 宽度超出屏幕
             if (maxLength > showLength) {
                 // 字宽
                 const w = Math.ceil(this.$el.offsetWidth / showLength)
@@ -71,8 +73,15 @@ export default {
                 console.log('字段', maxLength, showLength, w, bodyWidth, w * maxLength)
                 if (bodyWidth - 100 < w * maxLength) {
                     this.$refs.full.style.maxWidth = bodyWidth - 100 + 'px'
-                    this.$refs.full.style.overflowY = 'auto'
+                    this.$refs.full.style.overflowX = 'auto'
                 }
+            }
+            // 高度超出屏幕
+            const bodyHeight = document.body.clientHeight || document.body.offsetHeight
+            const elHeight = this.$refs.full.offsetHeight
+            if (bodyHeight - 200 < elHeight) {
+                this.$refs.full.style.maxHeight = bodyHeight - 200 + 'px'
+                this.$refs.full.style.overflowY = 'auto'
             }
         },
     },
