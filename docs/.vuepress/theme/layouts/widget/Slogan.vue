@@ -1,18 +1,27 @@
 <template lang="pug">
-.site-name(:class='{ "can-hide": $site.themeConfig.logo, ok: word }')
+.site-name(
+    :class='{ "can-hide": $site.themeConfig.logo, ok: word }',
+    @mouseenter='mouseIn = "mouse-in"',
+    @mouseleave='mouseIn = "mouse-out"'
+)
     .word {{ word }}
-    .full(v-if='poetry', :style='{ "--location": -(poetry.location + 1) * 1.5 + "rem" }')
+    .full(
+        v-if='poetry',
+        :class='mouseIn',
+        ref='full',
+        :style='{ "--location": -(poetry.location + 1) * 1.5 + "rem" }'
+    )
         .title {{ poetry.title }}
-        .author {{ poetry.dynasty }}{{' · '}}
+        .author {{ poetry.dynasty }}{{ " · " }}
             i {{ poetry.author }}
-        .content
+        .content(ref='content')
             .sentence(v-for='s in poetry.content') {{ s }}
 </template>
 
 <script>
 export default {
     name: 'Slogan',
-    data: () => ({ word: '', poetry: null }),
+    data: () => ({ word: '', poetry: null, mouseIn: null }),
     mounted() {
         this.loadPoetry()
     },
@@ -24,8 +33,8 @@ export default {
             script.onload = () => {
                 jinrishici.load(result => {
                     this.word = result.data.content
-                    this.translate(result.data)
                     this.$nextTick(() => {
+                        this.translate(result.data)
                         this.$emit('resize')
                     })
                 })
@@ -44,6 +53,26 @@ export default {
                 ...data.origin,
                 content: d1,
                 location,
+            }
+            this.$nextTick(() => this.checkMaxWidth())
+        },
+        checkMaxWidth() {
+            const data = this.poetry
+            const showLength = this.word.length
+            const maxLength = data.content.reduce(
+                (acc, cur) => (cur.length > acc ? cur.length : acc),
+                showLength
+            )
+            if (maxLength > showLength) {
+                // 字宽
+                const w = Math.ceil(this.$el.offsetWidth / showLength)
+                const bodyWidth = document.body.clientWidth || document.body.offsetWidth
+                this.$refs.content.style.width = w * maxLength + 'px'
+                console.log('字段', maxLength, showLength, w, bodyWidth, w * maxLength)
+                if (bodyWidth - 100 < w * maxLength) {
+                    this.$refs.full.style.maxWidth = bodyWidth - 100 + 'px'
+                    this.$refs.full.style.overflowY = 'auto'
+                }
             }
         },
     },
@@ -94,8 +123,8 @@ export default {
         top var(--location)
         line-height 1.5rem
         visibility hidden
-        opacity 1
-        transition 0.45s cubic-bezier(0.29, 1, 0.29, 1)
+        opacity 0
+        transition 0.8s
         background #fff
         z-index 2
         .author {
@@ -113,17 +142,61 @@ export default {
             top -10px
             background #fff
             z-index -1
-            box-shadow 0 0 4px rgba(0, 0, 0, 0.1)
+        }
+        &.mouse-in {
+            animation show 0.45s both
+        }
+        &.mouse-in::after {
+            animation after-show 0.45s both
+        }
+        &.mouse-out {
+            animation hide 0.8s both reverse ease-in-out
+        }
+        &.mouse-out::after {
+            animation after-hide 0.8s both reverse ease-in-out
+        }
+        @keyframes show {
+            to {
+                top 0
+                visibility visible
+                opacity 1
+            }
+        }
+        @keyframes hide {
+            50% {
+                opacity 1
+                top var(--location)
+            }
+            to {
+                top 0
+                visibility visible
+                opacity 1
+            }
+        }
+        @keyframes after-hide {
+            50% {
+                box-shadow 0 0 0 rgba(0, 0, 0, 0)
+            }
+            to {
+                box-shadow 0 0 4px rgba(0, 0, 0, 0.1)
+            }
+        }
+        @keyframes after-show {
+            to {
+                box-shadow 0 0 4px rgba(0, 0, 0, 0.1)
+            }
         }
     }
     &:hover {
         .word {
             opacity 0
         }
-        .full {
-            top 0
-            visibility visible
-            opacity 1
+    }
+}
+@media (max-width $MQMobile) {
+    .navbar {
+        .word {
+            line-height 2.2rem
         }
     }
 }

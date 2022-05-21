@@ -1,5 +1,5 @@
 module.exports = {
-    title: 'Hello World',
+    title: '前端大弟',
     description: '向内而求，向死而生',
     head: [['link', { rel: 'icon', href: '/ico.ico' }]],
     port: 6688,
