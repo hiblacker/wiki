@@ -14,4 +14,4 @@ const findMax = arr =>
     )
 ```
 
-2.
+2. 基础算法
