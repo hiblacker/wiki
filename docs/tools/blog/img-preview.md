@@ -41,8 +41,22 @@ module.exports = {
 export default {
     name: 'Layout',
     // ...
+    watch: {
+        $route() {
+            this.$nextTick(this.viewerInit)
+        },
+    },
     mounted() {
-        new Viewer(document.getElementsByClassName('theme-default-content')[0])
+        this.viewerInit()
+    },
+    methods: {
+        viewerInit() {
+            const el = document.getElementsByClassName('theme-default-content')?.[0]
+            if (el) {
+                console.log('存在文章')
+                new Viewer(el)
+            } else console.log('不存在文章，不初始化')
+        },
     },
     // ...
 }

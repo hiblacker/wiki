@@ -100,15 +100,27 @@ export default {
             ]
         },
     },
+    watch: {
+        $route() {
+            this.$nextTick(this.viewerInit)
+        },
+    },
 
     mounted() {
         this.$router.afterEach(() => {
             this.isSidebarOpen = false
         })
-        new Viewer(document.getElementsByClassName('theme-default-content')[0])
+        this.viewerInit()
     },
 
     methods: {
+        viewerInit() {
+            const el = document.getElementsByClassName('theme-default-content')?.[0]
+            if (el) {
+                console.log('存在文章')
+                new Viewer(el)
+            } else console.log('不存在文章，不初始化')
+        },
         toggleSidebar(to) {
             this.isSidebarOpen = typeof to === 'boolean' ? to : !this.isSidebarOpen
             this.$emit('toggle-sidebar', this.isSidebarOpen)
