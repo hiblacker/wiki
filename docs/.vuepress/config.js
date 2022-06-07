@@ -41,7 +41,7 @@ module.exports = {
         sidebar: {
             '/project/': ['nvm'],
             '/web/': ['qiankun', 'comments'],
-            '/solution/': ['mobile', 'questions/m1-node'],
+            '/solution/': ['mobile', 'questions/m1-node', 'sentry'],
             '/DevOps/': [
                 'ssh',
                 'npm-scripts-deploy',
