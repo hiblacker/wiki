@@ -2,7 +2,7 @@
 sidebarDepth: 3
 ---
 
-# VuePress
+# VuePress 增加代码复制和自定义样式
 
 [官方文档](https://vuepress.vuejs.org/zh)
 

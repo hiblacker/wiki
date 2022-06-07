@@ -105,6 +105,7 @@ export default {
         this.$router.afterEach(() => {
             this.isSidebarOpen = false
         })
+        new Viewer(document.getElementsByClassName('theme-default-content')[0])
     },
 
     methods: {
@@ -135,3 +136,9 @@ export default {
     },
 }
 </script>
+
+<style>
+.theme-default-content img {
+    cursor: pointer;
+}
+</style>

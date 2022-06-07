@@ -1,7 +1,22 @@
 module.exports = {
     title: '前端大弟',
     description: '向内而求，向死而生',
-    head: [['link', { rel: 'icon', href: '/ico.ico' }]],
+    head: [
+        ['link', { rel: 'icon', href: '/ico.ico' }],
+        [
+            'link',
+            {
+                rel: 'stylesheet',
+                href: 'https://cdn.bootcdn.net/ajax/libs/viewerjs/1.10.5/viewer.min.css',
+            },
+        ],
+        [
+            'script',
+            {
+                src: 'https://cdn.bootcdn.net/ajax/libs/viewerjs/1.10.5/viewer.min.js',
+            },
+        ],
+    ],
     port: 6688,
     markdown: {
         lineNumbers: true,
@@ -67,7 +82,7 @@ module.exports = {
                     children: ['js/util', 'js/dom-util', 'js/object', 'js/canvas'],
                 },
             ],
-            '/tools/blog/': ['/tools/blog/VuePress'],
+            '/tools/blog/': ['/tools/blog/VuePress', '/tools/blog/img-preview'],
             '/tools/workflow/': ['/tools/workflow/image-uploader'],
             '/tools/git/': ['/tools/git/git'],
             '/algorithm/': [
