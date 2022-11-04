@@ -1,5 +1,5 @@
 module.exports = {
-    title: '前端大弟',
+    title: '日常记录',
     description: '向内而求，向死而生',
     head: [
         ['link', { rel: 'icon', href: '/ico.ico' }],
@@ -48,11 +48,12 @@ module.exports = {
                 ],
             },
             {
-                text: '文档',
+                text: '专题',
                 ariaLabel: 'Language Menu',
                 items: [
                     { text: 'Webpack', link: 'https://books.superwen.cn/webpack/' },
-                    { text: '十大经典算法', link: '/algorithm/' },
+                    { text: '十大经典算法', link: '/subject/algorithm/' },
+                    { text: 'TypeScript 类型体操通关秘籍', link: '/subject/jj/typescript/' },
                 ],
             },
             { text: '我的博客', link: 'https://superwen.cn' },
