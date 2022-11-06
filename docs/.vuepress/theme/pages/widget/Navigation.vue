@@ -5,8 +5,8 @@
         .navs
             a.nav(v-for='i in item.navs', :key='i.url', :href='i.url')
                 .info
-                    i.emoji(v-if='i.emoji') {{i.emoji}}
-                    img.icon(v-else :src='i.icon')
+                    i.emoji(v-if='i.emoji') {{ i.emoji }}
+                    img.icon(v-else, :src='i.icon')
                     .tit {{ i.name }}
                 .desc(v-if='i.desc') {{ i.desc }}
 </template>
@@ -22,6 +22,21 @@ export default {
     data() {
         return {
             groups: [
+                {
+                    title: '',
+                    navs: [
+                        {
+                            name: '稀土掘金',
+                            url: 'https://juejin.cn',
+                            icon: 'https://lf-cdn-tos.bytescm.com/obj/static/xitu_extension/static/gold.981a5510.svg',
+                        },
+                        {
+                            name: '知乎',
+                            url: 'https://zhihu.com',
+                            icon: 'https://lf-cdn-tos.bytescm.com/obj/static/xitu_extension/static/gold.981a5510.svg',
+                        },
+                    ],
+                },
                 {
                     title: '文档',
                     navs: [
@@ -39,7 +54,7 @@ export default {
                     ],
                 },
                 {
-                    title: '文档 - Vue',
+                    title: 'Vue',
                     navs: [
                         {
                             name: 'Vue.js',
@@ -79,7 +94,7 @@ export default {
                     ],
                 },
                 {
-                    title: '文档 - Vue 3',
+                    title: 'Vue 3',
                     navs: [
                         {
                             name: 'Vue 3',
@@ -109,17 +124,13 @@ export default {
                     ],
                 },
                 {
-                    title: '个人',
+                    title: '其它',
                     navs: [
                         {
                             name: '又拍云文件管理',
                             url: 'https://console.upyun.com/services/superwen-blog/filemanage/',
                             icon: 'https://cdn.superwen.cn/halo/3d19c9fa280df94f157c43c7a18f9de9.jpg',
                         },
-                    ],
-                },
-                {
-                    navs: [
                         {
                             name: 'Stylus',
                             url: 'https://stylus.bootcss.com/',
@@ -135,14 +146,11 @@ export default {
 
 <style scoped lang="stylus">
 .Navigation {
+    background #fff
     .group {
-        background #fff
         margin 0 auto
-        padding 20px 20px 40px
-        margin-bottom 20px
+        padding 10px 20px
         max-width 1024px
-        border-radius 8px
-        box-shadow 1px 1px 4px rgba(8, 8, 8, 0.1)
         .title {
             margin 0
         }
@@ -152,14 +160,13 @@ export default {
             .nav {
                 background #fff
                 flex none
-                // min-width 88px
                 color #444
                 border-radius 3px
                 box-shadow 0px 0px 4px rgba(8, 8, 8, 0.1)
                 padding 8px 10px
-                margin-right 15px
-                margin-top 20px
-                transition .35s
+                margin-right 10px
+                margin-top 10px
+                transition 0.35s
                 &:hover {
                     transform translateY(-2px)
                     box-shadow 0px 0px 4px rgba(8, 8, 8, 0.2)

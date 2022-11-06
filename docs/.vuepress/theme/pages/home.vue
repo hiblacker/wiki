@@ -2,16 +2,18 @@
 .Home
     Search
     .box
-        iframe.dida(src='https://dida365.com/webapp')
+        //- iframe.dida(src='https://dida365.com/webapp')
+        //- Juejin
         Navigation.box-nav
 </template>
 
 <script>
 import Search from './widget/Search'
 import Navigation from './widget/Navigation'
+import Juejin from './widget/Juejin'
 export default {
     name: 'Home',
-    components: { Search, Navigation },
+    components: { Search, Navigation, Juejin },
 }
 </script>
 
