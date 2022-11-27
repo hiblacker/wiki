@@ -1,19 +1,28 @@
 <template lang="pug">
 .Search(@keyup.meta='keyup')
     .input-box
-        form(:action='searchUrl', method='get', target='_blank', @submit='submit')
-            input(
-                ref='input',
-                v-model='query',
-                @keyup.down='change',
-                @focus='onfocus',
-                @blur='onblur'
-            )
+        input(
+            ref='input',
+            v-model='query',
+            @keyup.tab='change',
+            @keyup.down='down',
+            @keyup.up='up',
+            @keyup.enter='search',
+            @focus='onfocus',
+            @blur='onblur',
+            @input='onInput'
+        )
         .btn-box
             .btn(@click='search') {{ which }}
         transition(name='fade')
             .suggestion(v-if='suggestions.length')
-                .item(v-for='i in suggestions', :key='i', @click='(query = i), search()') {{ i }}
+                .item(
+                    v-for='(i, k) in suggestions',
+                    :class='{ on: k + 1 == select }',
+                    :key='i',
+                    @click='(query = i), search()',
+                    @mouseenter='mouseenter(k)'
+                ) {{ i }}
     //- .preview(v-if='query && which != "Google"')
     //-     iframe(:src='searchUrl')
 </template>
@@ -25,31 +34,17 @@ export default {
         return {
             which: 'Google',
             query: '',
+            select: 0,
             suggestions: [],
             focus: false,
         }
     },
-    watch: {
-        query(val) {
-            if (!val) {
-                this.suggestions = []
-                return
-            }
-            const url = `https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=${val}&cb=getSuggestion`
-            const script = document.createElement('script')
-            script.type = 'text/javascript'
-            script.src = url
-            document.getElementsByTagName('head')[0].appendChild(script)
-            setTimeout(() => {
-                document.getElementsByTagName('head')[0].removeChild(script)
-            }, 0)
-        },
-    },
+    watch: {},
     computed: {
         searchUrl() {
             let url
             if (this.which == 'Google') {
-                url = `https://google.com/search?q=${this.query}`
+                url = `https://www.google.com/search?q=${this.query}`
             } else {
                 url = `https://baidu.com/s?word=${this.query}`
             }
@@ -79,9 +74,28 @@ export default {
                     this.query = ''
                 }, 0)
             }
+            // 按下 Tab 建 阻止浏览器默认切换行为
+            if (keyNum == 9) {
+                e.preventDefault()
+            }
         },
         submit() {
             this.search()
+        },
+        onInput() {
+            const val = this.query
+            if (!val) {
+                this.suggestions = []
+                return
+            }
+            const url = `https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=${val}&cb=getSuggestion`
+            const script = document.createElement('script')
+            script.type = 'text/javascript'
+            script.src = url
+            document.getElementsByTagName('head')[0].appendChild(script)
+            setTimeout(() => {
+                document.getElementsByTagName('head')[0].removeChild(script)
+            }, 0)
         },
         getSuggestion(res) {
             console.log(res.s)
@@ -89,12 +103,26 @@ export default {
         },
         search() {
             if (!this.query) return
-            location.href = this.searchUrl
+            window.location.href = this.searchUrl
             this.suggestions = []
         },
         change() {
+            console.log('change')
             this.which = this.which === 'Google' ? '百度' : 'Google'
         },
+        down() {
+            if (this.select + 1 >= this.suggestions.length) return
+            this.select++
+            this.query = this.suggestions[this.select - 1]
+        },
+        up() {
+            if (this.select - 1 <= 0) return
+            this.select--
+            this.query = this.suggestions[this.select - 1]
+        },
+        mouseenter(k) {
+            this.select = k + 1
+        }
     },
     beforeDestroy() {
         document.onkeydown = null
@@ -151,14 +179,17 @@ export default {
             width 630px
             background #fff
             border-radius 10px
-            padding 10px 20px
+            padding 10px 0
             box-shadow 1px 1px 5px rgba(8, 8, 8, 0.4)
             .item {
-                margin 8px 0
+                padding 6px 20px
                 cursor pointer
                 color #666
                 &:hover {
                     color #333
+                }
+                &.on {
+                    background #f5f5f6
                 }
             }
         }
