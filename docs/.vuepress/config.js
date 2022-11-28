@@ -1,3 +1,9 @@
+function hideOrNot(config) {
+    const env = process.env.NODE_ENV
+    if (env == 'development') return [config]
+    return []
+}
+hideOrNot()
 module.exports = {
     title: '日常记录',
     description: '向内而求，向死而生',
@@ -34,10 +40,10 @@ module.exports = {
         lastUpdated: '最后更新',
         nav: [
             // { text: '知识体系', link: '/outline/' },
-            { text: '前端技术', link: '/web/' },
+            { text: '前端', link: '/web/' },
             { text: '解决方案', link: '/solution/' },
             // { text: '代码片段', link: '/snippets/js/util' },
-            { text: '工程化', link: '/project/' },
+            // { text: '工程化', link: '/project/' },
             { text: '运维', link: '/DevOps/' },
             {
                 text: '工具',
@@ -54,13 +60,11 @@ module.exports = {
                 ariaLabel: 'Language Menu',
                 items: [
                     { text: 'Webpack', link: 'https://books.superwen.cn/webpack/' },
-                    { text: '十大经典算法', link: '/subject/algorithm/' },
-                    {
+                    { text: '算法', link: '/subject/algorithm/' },
+                    ...hideOrNot({
                         text: 'TypeScript 类型体操通关秘籍',
                         link: '/subject/jj/typescript/',
-                    },
-                    // { text: '前端算法与数据结构面试', link: '/subject/jj/algorithm/' },
-                    { text: '设计模式', link: '/subject/jj/design-pattern/' },
+                    }),
                     {
                         text: 'JavaScript设计模式',
                         link: 'https://books.superwen.cn/JavaScript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.pdf',
@@ -70,13 +74,16 @@ module.exports = {
             { text: '我的博客', link: 'https://superwen.cn' },
         ],
         sidebar: {
-            '/project/': [],
             '/web/': [
+                {
+                    title: '知识体系',
+                    path: '/web/',
+                },
                 'qiankun',
                 'comments',
                 {
                     title: '代码片段', // 必要的
-                    path: 'snippets/js/util', // 可选的, 标题的跳转链接，应为绝对路径且必须存在
+                    path: '/web/snippets/js/util', // 可选的, 标题的跳转链接，应为绝对路径且必须存在
                     // collapsable: false, // 可选的, 默认值是 true,
                     sidebarDepth: 2, // 可选的, 默认值是 1
                     children: [
@@ -86,10 +93,10 @@ module.exports = {
                         'snippets/js/canvas',
                     ],
                 },
-                {
+                ...hideOrNot({
                     title: '前端算法与数据结构面试',
                     path: '/subject/jj/algorithm/',
-                },
+                }),
             ],
             '/solution/': ['mobile', 'questions/m1-node', 'node-choose', 'sentry'],
             '/DevOps/': [
@@ -109,16 +116,24 @@ module.exports = {
             '/tools/git/': ['/tools/git/git'],
             '/subject/algorithm/': [
                 '/subject/algorithm/',
-                '/subject/algorithm/1.bubbleSort',
-                '/subject/algorithm/2.selectionSort',
-                '/subject/algorithm/3.insertionSort',
-                '/subject/algorithm/4.shellSort',
-                '/subject/algorithm/5.mergeSort',
-                '/subject/algorithm/6.quickSort',
-                '/subject/algorithm/7.heapSort',
-                '/subject/algorithm/8.countingSort',
-                '/subject/algorithm/9.bucketSort',
-                '/subject/algorithm/10.radixSort',
+                '/subject/algorithm/complexity',
+                {
+                    title: '十大经典排序算法',
+                    path: '/subject/algorithm/basic/',
+                    children: [
+                        '/subject/algorithm/basic/1.bubbleSort',
+                        '/subject/algorithm/basic/2.selectionSort',
+                        '/subject/algorithm/basic/3.insertionSort',
+                        '/subject/algorithm/basic/4.shellSort',
+                        '/subject/algorithm/basic/5.mergeSort',
+                        '/subject/algorithm/basic/6.quickSort',
+                        '/subject/algorithm/basic/7.heapSort',
+                        '/subject/algorithm/basic/8.countingSort',
+                        '/subject/algorithm/basic/9.bucketSort',
+                        '/subject/algorithm/basic/10.radixSort',
+                    ],
+                },
+                '/subject/algorithm/binary-tree',
             ],
             '/subject/jj/algorithm/': [
                 '/subject/jj/algorithm/',

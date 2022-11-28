@@ -1,84 +1,65 @@
-# 前端技术
+# 前端
 
-## Vue3 中，Vuex 的 action 如何访问全局 Vue 实例？
+前端知识体系，重点归纳整理，汇总零散前端知识。
 
-1. 将实例挂载到 `store` 上
-2. `action` 中 `this` 可以访问
+## HTML
 
-```js
-import { createApp } from 'vue'
-import { createStore } from 'vuex'
-const app = createApp(App)
-const store = createStore({
-    actions: {
-        test() {
-            console.log(this._vm)
-        },
-    },
-})
-store._vm = app
-```
+-   [页面解析流程](./HTML/%E9%A1%B5%E9%9D%A2%E8%A7%A3%E6%9E%90%E6%B5%81%E7%A8%8B.md)
 
-## 通过 JS 命令式调用并挂载 Vue 组件
+## CSS
 
-比如当我们想要点击按钮，展示弹窗操作，通常会将弹窗组件抽离，然后引入弹窗组件，设置组件状态、绑定数据，逻辑过于分散。不够优雅。
+## JavaScript
 
-这里通过 JS 引用组件并挂载 DOM。这样可以将逻辑聚合在一个 function 中。同时对于调用者非常友好，只需调用方法，传入所需参数即可。
+-   对象
+-   数组
+-   原型链
+-   继承
+-   闭包
+-   API
+    -   Promise 原理、手写
+    -   instanceof 原理
+-   DOM
+-   [ES6](./javascript/es6.md)
+-   事件循环
+    -   微任务执行时，产生新的微任务，如何执行？
 
-多人协作时，非常便捷好用。
+## [TypeScript](./typescript/README.md)
 
-### Vue2
+## 框架
 
-JS 中挂载调用：
+-   Vue
+-   React
 
-```js
-import Vue from 'vue'
-import ManageToast from './widget/ManageToast.vue'
-function showManage() {
-    const ManageToastConstructor = Vue.extend(ManageToast)
-    let instance = new ManageToastConstructor({
-        data: {
-            id: 111,
-        },
-        methods: {
-            close() {
-                instance.dialogVisible = false
-                setTimeout(() => {
-                    document.body.removeChild(instance.$el)
-                    instance = null
-                }, 800)
-            },
-        },
-    })
-    instance.$mount()
-    document.body.appendChild(instance.$el)
-    instance.dialogVisible = true
-}
-```
+## 算法
 
-Vue 组件：
+## 设计模式
 
-```vue
-<template>
-    <el-dialog
-        :visible.sync="dialogVisible"
-        width="30%"
-        :before-close="close"
-        custom-class="normal-dialog"
-    >
-        <span>这是一段信息 {{ id }}</span>
-    </el-dialog>
-</template>
+## Node.js
 
-<script>
-export default {
-    name: 'ManageToast',
-    data() {
-        return {
-            id: null,
-            dialogVisible: false,
-        }
-    },
-}
-</script>
-```
+Node 是一个基于 V8 引擎的 Javascript 运行环境，它使得 Javascript 可以运行在服务端，与操作系统交互，进行文件控制、网络控制、进程控制等。
+
+## 工程化
+
+-   [Webpack](./project/webpack.md)
+-   Vite
+-   Rollup
+-   DevOps
+
+### 案例
+
+-   图片压缩
+
+## 计算机基础
+
+### 网络
+
+-   HTTP: 强缓存/协商缓存
+-   HTTP: 状态码
+-   HTTP 与 HTTPS 区别
+    -   HTTP 是明文传输，HTTPS 的数据传输是经过 SSL 加密的，更加安全。
+    -   HTTP 使用 TCP 三次握手交换三个包建立连接，HTTPS 除了三次握手还需要 SSL 握手，需要交换 9 个包，因此速度慢于 HTTP，更耗费服务器资源。
+    -   HTTP 默认 80 端口，HTTPS 默认 443 端口
+-   HTTPS 加密原理
+-   TCP: 连接建立流程：三次握手、四次挥手
+-   DNS 流程
+-   跨域

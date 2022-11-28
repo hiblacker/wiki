@@ -8,7 +8,6 @@
             @keyup.down='down',
             @keyup.up='up',
             @keyup.enter='search',
-            @focus='onfocus',
             @blur='onblur',
             @input='onInput'
         )
@@ -36,7 +35,6 @@ export default {
             query: '',
             select: 0,
             suggestions: [],
-            focus: false,
         }
     },
     watch: {},
@@ -59,11 +57,8 @@ export default {
         document.onkeydown = this.listen
     },
     methods: {
-        onfocus() {
-            this.focus = true
-        },
         onblur() {
-            this.focus = false
+            this.suggestions = []
         },
         listen(e) {
             var keyNum = window.event ? e.keyCode : e.which
@@ -132,7 +127,7 @@ export default {
 
 <style scoped lang="stylus">
 .Search {
-    padding-top 2rem
+    padding-top 1rem
     text-align center
     .input-box {
         display flex

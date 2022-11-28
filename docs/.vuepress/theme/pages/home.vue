@@ -2,7 +2,7 @@
 .Home
     Search
     .box
-        //- iframe.dida(src='https://dida365.com/webapp')
+        iframe.dida(src='https://dida365.com/webapp')
         //- Juejin
         Navigation.box-nav
 </template>
@@ -19,17 +19,17 @@ export default {
 
 <style scoped lang="stylus">
 .Home {
-    padding-top 5rem
+    padding-top 70px
     background #f3f3f3
     min-height 100vh
     .box {
         display flex
-        margin-top 50px
+        margin-top 30px
         justify-content center
     }
     .dida {
         margin 0 10px
-        width 380px
+        width 370px
         height 660px
         border 0
         box-shadow 1px 1px 4px rgba(8, 8, 8, 0.1)
