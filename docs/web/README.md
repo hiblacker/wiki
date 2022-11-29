@@ -24,6 +24,7 @@
     -   微任务执行时，产生新的微任务，如何执行？
 
 ## [TypeScript](./typescript/README.md)
+[TypeScript 类型体操通关秘籍](https://www.yuque.com/yoho/vokwx8)
 
 ## 框架
 
@@ -31,8 +32,10 @@
 -   React
 
 ## 算法
+[前端算法与数据结构](https://www.yuque.com/yoho/strf06)
 
 ## 设计模式
+[JavaScript设计模式核⼼原理与应⽤实践](https://www.yuque.com/yoho/cbi954)
 
 ## Node.js
 
