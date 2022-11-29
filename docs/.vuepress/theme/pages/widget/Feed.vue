@@ -61,7 +61,7 @@ export default {
                 // 300-最新 200-推荐 3-热榜
                 sort_type: 200,
             }
-            axios.post('http://api.superwen.cn/home/juejin-recommend', body).then(res => {
+            axios.post('//api.superwen.cn/home/juejin-recommend', body).then(res => {
                 this.list = res.data.data
             })
         },
