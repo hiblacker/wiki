@@ -20,7 +20,7 @@ export default {
             sort_type: 300,
         }
         axios.post(
-            'http://api.juejin.cn/recommend_api/v1/article/recommend_cate_feed?uuid=7054333980195620387&aid=6587',
+            '//api.juejin.cn/recommend_api/v1/article/recommend_cate_feed?uuid=7054333980195620387&aid=6587',
             body
         )
     },

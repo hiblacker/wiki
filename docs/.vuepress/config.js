@@ -94,6 +94,7 @@ module.exports = {
             '/DevOps/': [
                 'ssh',
                 'npm-scripts-deploy',
+                'https-deploy',
                 'linux',
                 {
                     title: 'DevOps', // 必要的

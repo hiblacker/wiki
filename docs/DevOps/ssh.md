@@ -44,7 +44,7 @@ ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.225.25
 默认使用 22 端口，可使用 `-p` 自定义端口：
 
 ```bash
-ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.225.25 -p 62322
+ssh-copy-id -i ~/.ssh/id_rsa.pub -p 62322 root@192.168.225.25
 ```
 
 上面这条命令是写到服务器上的 ssh 目录下去了
