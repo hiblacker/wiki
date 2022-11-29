@@ -19,8 +19,7 @@ export default {
 
 <style scoped lang="stylus">
 .Home {
-    padding-top 70px
-    background #f3f3f3
+    padding 70px 0
     min-height 100vh
     .box {
         display flex
@@ -31,9 +30,7 @@ export default {
         margin 0 10px
         width 370px
         height 660px
-        border 0
-        box-shadow 1px 1px 4px rgba(8, 8, 8, 0.1)
-        border-radius 10px
+        border 1px solid #dee3eb
     }
     .box-nav {
         margin 0 10px

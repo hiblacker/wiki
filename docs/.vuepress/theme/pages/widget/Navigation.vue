@@ -15,13 +15,16 @@
                         img.icon(v-else, :src='i.icon')
                         .tit {{ i.name }}
                     .desc(v-if='i.desc') {{ i.desc }}
+    Feed
 </template>
 
 <script>
 import config from './nav.config.js'
+import Feed from './Feed'
 
 export default {
     name: 'Navigation',
+    components: { Feed },
     data() {
         return {
             topLinks: config.topLinks,
@@ -45,11 +48,11 @@ a {
     .top-links {
         display flex
         flex-wrap wrap
-        line-height 1.8
+        line-height 2
         padding 6px 0
         padding-right 10px
-        background #fff
-        max-width 1024px
+        max-width 804px
+        border 1px solid #dee3eb
         .link {
             margin-left 15px
             display flex
@@ -65,11 +68,16 @@ a {
     .category {
         background #fff
         margin-top 20px
+        padding 5px 20px
+        border 1px solid #dee3eb
         .group {
             margin 0 auto
-            padding 10px 20px
+            padding 10px 0
             max-width 1024px
             display flex
+            // & + .group {
+            //     border-top 1px solid #dee3eb
+            // }
             .head {
                 margin 0
                 font-weight 500

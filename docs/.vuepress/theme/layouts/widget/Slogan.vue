@@ -41,7 +41,7 @@ export default {
             }
         },
         translate(data) {
-            console.log(JSON.stringify(data, null, 2))
+            // console.log(JSON.stringify(data, null, 2))
             const d1 = data.origin.content
                 .join('')
                 .replace(/(。|！|？)(.)/g, '$1FLAG$2')

@@ -157,12 +157,17 @@ export default {
             ],
         },
         {
-            title: '其它',
+            title: '工具',
             navs: [
                 {
                     name: '又拍云文件管理',
                     url: 'https://console.upyun.com/services/superwen-blog/filemanage/',
                     icon: 'https://cdn.superwen.cn/halo/3d19c9fa280df94f157c43c7a18f9de9.jpg',
+                },
+                {
+                    name: 'Apifox',
+                    url: 'https://www.apifox.cn/apihub',
+                    icon: 'https://cdn.apifox.cn/logo/apifox-logo-512.png',
                 },
                 {
                     name: 'Stylus',
