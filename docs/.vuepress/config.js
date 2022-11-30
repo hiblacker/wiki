@@ -1,9 +1,3 @@
-function hideOrNot(config) {
-    const env = process.env.NODE_ENV
-    if (env == 'development') return [config]
-    return []
-}
-hideOrNot()
 module.exports = {
     title: '日常记录',
     description: '向内而求，向死而生',
@@ -21,6 +15,13 @@ module.exports = {
             'script',
             {
                 src: 'https://cdn.bootcdn.net/ajax/libs/viewerjs/1.10.5/viewer.min.js',
+            },
+        ],
+        [
+            'script',
+            {
+                src: 'https://hm.baidu.com/hm.js?cba5944fbdb3bcd8aad9bf96877696c7',
+                async: true,
             },
         ],
     ],
@@ -43,7 +44,6 @@ module.exports = {
             { text: '前端', link: '/web/' },
             { text: '解决方案', link: '/solution/' },
             // { text: '代码片段', link: '/snippets/js/util' },
-            // { text: '工程化', link: '/project/' },
             { text: '运维', link: '/DevOps/' },
             {
                 text: '工具',

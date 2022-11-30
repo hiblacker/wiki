@@ -2,18 +2,17 @@
 .Home
     Search
     .box
-        iframe.dida(src='https://dida365.com/webapp')
-        //- Juejin
+        Feed.feed
         Navigation.box-nav
 </template>
 
 <script>
 import Search from './widget/Search'
 import Navigation from './widget/Navigation'
-import Juejin from './widget/Juejin'
+import Feed from './widget/Feed'
 export default {
     name: 'Home',
-    components: { Search, Navigation, Juejin },
+    components: { Search, Navigation, Feed },
 }
 </script>
 
@@ -23,17 +22,15 @@ export default {
     min-height 100vh
     .box {
         display flex
-        margin-top 30px
+        margin 30px 20px 0
         justify-content center
     }
-    .dida {
-        margin 0 10px
-        width 370px
-        height 660px
-        border 1px solid #dee3eb
+    .feed {
+        min-width 350px
+        max-width 500px
     }
     .box-nav {
-        margin 0 10px
+        margin-left 20px
         min-width 480px
     }
 }

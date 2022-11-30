@@ -4,6 +4,7 @@
         input(
             ref='input',
             v-model='query',
+            placeholder='`~`键定位 Tab键切换搜索'
             @keyup.tab='change',
             @keyup.down='down',
             @keyup.up='up',
@@ -37,7 +38,6 @@ export default {
             suggestions: [],
         }
     },
-    watch: {},
     computed: {
         searchUrl() {
             let url

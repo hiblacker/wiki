@@ -4,7 +4,7 @@ const base64s = {
 export default {
     topLinks: [
         {
-            name: '稀土掘金',
+            name: '掘金',
             url: 'https://juejin.cn',
             icon: 'https://lf-cdn-tos.bytescm.com/obj/static/xitu_extension/static/gold.981a5510.svg',
         },

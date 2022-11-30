@@ -14,17 +14,14 @@
                         i.emoji(v-if='i.emoji') {{ i.emoji }}
                         img.icon(v-else, :src='i.icon')
                         .tit {{ i.name }}
-                    .desc(v-if='i.desc') {{ i.desc }}
-    Feed
+    iframe.dida(src='https://dida365.com/webapp')
 </template>
 
 <script>
 import config from './nav.config.js'
-import Feed from './Feed'
 
 export default {
     name: 'Navigation',
-    components: { Feed },
     data() {
         return {
             topLinks: config.topLinks,
@@ -68,16 +65,12 @@ a {
     .category {
         background #fff
         margin-top 20px
-        padding 5px 20px
+        padding 10px 20px
         border 1px solid #dee3eb
         .group {
-            margin 0 auto
-            padding 10px 0
+            padding 6px 0
             max-width 1024px
             display flex
-            // & + .group {
-            //     border-top 1px solid #dee3eb
-            // }
             .head {
                 margin 0
                 font-weight 500
@@ -104,18 +97,15 @@ a {
                             margin-left 4px
                         }
                     }
-                    .desc {
-                        padding 0 0 3px
-                        font-size 12px
-                        color #888
-                        margin-top 6px
-                        overflow hidden
-                        text-overflow ellipsis
-                        white-space nowrap
-                    }
                 }
             }
         }
+    }
+    .dida {
+        margin-top 20px
+        width 100%
+        height 560px
+        border 1px solid #dee3eb
     }
 }
 </style>
