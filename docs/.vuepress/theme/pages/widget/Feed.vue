@@ -92,7 +92,6 @@ i {
 }
 .Feed {
     border 1px solid #dee3eb
-    transition 0.35s
     .navs {
         background #FAFBFC
         display flex

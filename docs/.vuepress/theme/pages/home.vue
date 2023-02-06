@@ -18,11 +18,11 @@ export default {
 
 <style scoped lang="stylus">
 .Home {
-    padding 70px 0
+    padding 70px 50px
     min-height 100vh
     .box {
         display flex
-        margin 30px 20px 0
+        margin 30px 0 0
         justify-content center
     }
     .feed {
