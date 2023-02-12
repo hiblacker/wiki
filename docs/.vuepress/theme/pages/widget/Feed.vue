@@ -48,7 +48,7 @@ export default {
             listLoading: false,
         }
     },
-    created() {
+    mounted() {
         this.getList()
     },
     methods: {

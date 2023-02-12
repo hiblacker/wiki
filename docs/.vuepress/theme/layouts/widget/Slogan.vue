@@ -21,7 +21,7 @@
 <script>
 export default {
     name: 'Slogan',
-    data: () => ({ word: '', poetry: null, mouseIn: null }),
+    data: () => ({ word: '一点浩然气', poetry: null, mouseIn: null }),
     mounted() {
         this.loadPoetry()
     },
