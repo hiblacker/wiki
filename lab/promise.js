@@ -40,9 +40,6 @@ function MyPromise(executor) {
 }
 
 
-MyPromise.prototype.catch = function (onRejected) {
-    return this.then(null, onRejected)
-}
 MyPromise.prototype.then = function (onFulfilled, onRejected) {
     return new MyPromise((resolve, reject) => {
         onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : v => v
@@ -74,6 +71,10 @@ MyPromise.prototype.then = function (onFulfilled, onRejected) {
             })
         }
     })
+}
+
+MyPromise.prototype.catch = function (onRejected) {
+    return this.then(null, onRejected)
 }
 
 new MyPromise((res, rej) => {

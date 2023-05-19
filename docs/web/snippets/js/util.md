@@ -50,7 +50,7 @@ export function timeFormat(fmt = 'yyyy-MM-dd hh:mm:ss.S') {
 ```js
 /**
  * Base64 图片转二进制（Blob）
- * @param {String} base64Data
+ * @param {string} base64Data
  * @return {Blob}
  */
 function dataURItoBlob(base64Data) {
@@ -82,8 +82,8 @@ axios({
 ```js
 /**
  * 测量DOM文字宽度
- * @param {String} text 要测量的文字
- * @param {String} fontStyle 字体样式
+ * @param {string} text 要测量的文字
+ * @param {string} fontStyle 字体样式
  * @return {Number}
  */
 function getTextWith(text, fontStyle = '16px') {
@@ -105,7 +105,7 @@ console.log(textWidth)
  * @return {Object}
  */
 export function getUrlVars() {
-    var vars= {},
+    var vars = {},
         hash
     var hashes = window.location.href
         .slice(window.location.href.indexOf('?') + 1)
@@ -115,5 +115,18 @@ export function getUrlVars() {
         vars[hash[0]] = hash[1]
     }
     return vars
+}
+```
+## 格式化数字加单位
+```js
+/**
+ * 格式化数字加单位
+ * @param {string} text 要测量的文字
+ * @return {string}
+ */
+export function numberFormat(num) {
+    if (num < 10000) return num
+    const n = num % 10000 === 0 ? 0 : 1
+    return `${(num / 10000).toFixed(n)}万`
 }
 ```

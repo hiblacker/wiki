@@ -1,5 +1,5 @@
 module.exports = {
-    title: '日常记录',
+    title: '前端 Wiki',
     description: '向内而求，向死而生',
     lastUpdated: true,
     head: [

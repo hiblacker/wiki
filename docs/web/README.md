@@ -2,10 +2,6 @@
 
 前端知识体系，重点归纳整理，汇总零散前端知识。
 
-## HTML
-
--   [浏览器渲染原理流程](./HTML/浏览器渲染原理流程.md)
-
 ## CSS
 
 ## JavaScript
@@ -24,18 +20,29 @@
     -   微任务执行时，产生新的微任务，如何执行？
 
 ## [TypeScript](./typescript/README.md)
+
 [TypeScript 类型体操通关秘籍](https://www.yuque.com/yoho/vokwx8)
+
+## 浏览器
+
+-   [浏览器渲染原理流程](./HTML/浏览器渲染原理流程.md)
 
 ## 框架
 
--   Vue
--   React
+### Vue
+
+-   [响应式原理](./framework/vue-reactivity.md)
+-   diff 算法
+
+### React
 
 ## 算法
+
 [前端算法与数据结构](https://www.yuque.com/yoho/strf06)
 
 ## 设计模式
-[JavaScript设计模式核⼼原理与应⽤实践](https://www.yuque.com/yoho/cbi954)
+
+[JavaScript 设计模式核⼼原理与应⽤实践](https://www.yuque.com/yoho/cbi954)
 
 ## Node.js
 
@@ -43,6 +50,9 @@ Node 是一个基于 V8 引擎的 Javascript 运行环境，它使得 Javascript
 
 ## 工程化
 
+
+- [什么是前端工程化？工程化的理解](./project/thought.md)
+- [前端性能优化](./project/performance.md)
 -   [Webpack](./project/webpack.md)
 -   Vite
 -   Rollup
@@ -63,6 +73,6 @@ Node 是一个基于 V8 引擎的 Javascript 运行环境，它使得 Javascript
     -   HTTP 使用 TCP 三次握手交换三个包建立连接，HTTPS 除了三次握手还需要 SSL 握手，需要交换 9 个包，因此速度慢于 HTTP，更耗费服务器资源。
     -   HTTP 默认 80 端口，HTTPS 默认 443 端口
 -   HTTPS 加密原理
--   TCP: 连接建立流程：三次握手、四次挥手
+-   TCP：三次握手、四次挥手
 -   DNS 流程
 -   跨域
