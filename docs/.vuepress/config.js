@@ -81,12 +81,13 @@ module.exports = {
                     title: '代码片段', // 必要的
                     path: '/web/snippets/js/util', // 可选的, 标题的跳转链接，应为绝对路径且必须存在
                     // collapsable: false, // 可选的, 默认值是 true,
-                    sidebarDepth: 2, // 可选的, 默认值是 1
+                    // sidebarDepth: 2, // 可选的, 默认值是 1
                     children: [
                         'snippets/js/util',
                         'snippets/js/dom-util',
                         'snippets/js/object',
                         'snippets/js/canvas',
+                        'snippets/vue',
                     ],
                 },
             ],

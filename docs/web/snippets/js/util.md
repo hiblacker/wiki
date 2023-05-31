@@ -121,7 +121,7 @@ export function getUrlVars() {
 ```js
 /**
  * 格式化数字加单位
- * @param {string} text 要测量的文字
+ * @param {number} num 数字
  * @return {string}
  */
 export function numberFormat(num) {
