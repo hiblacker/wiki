@@ -54,7 +54,7 @@ jobs:
               uses: easingthemes/ssh-deploy@v2.0.7
               env:
                   SSH_PRIVATE_KEY: ${{ env.SERVER_PRIVATE_KEY }}
-                  ARGS: '-avz --delete'
+                  ARGS: '-avz --delete -vv'
                   SOURCE: 'lab/'
                   REMOTE_HOST: 118.89.219.85
                   REMOTE_USER: ubuntu
