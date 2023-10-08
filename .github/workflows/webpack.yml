@@ -56,7 +56,7 @@ jobs:
                   SSH_PRIVATE_KEY: ${{ env.SERVER_PRIVATE_KEY }}
                   ARGS: '-avz --delete'
                   SOURCE: 'lab/'
-                  REMOTE_HOST: ${{ env.SERVER_HOST }}
-                  REMOTE_USER: ubuntu2
-                  REMOTE_PORT: ${{ env.SERVER_PORT }} -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedKeyTypes=+ssh-rsa
+                  REMOTE_HOST: 118.89.219.85
+                  REMOTE_USER: ubuntu
+                  REMOTE_PORT: 13022 -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedKeyTypes=+ssh-rsa
                   TARGET: /home/ubuntu # 服务器目标路径
