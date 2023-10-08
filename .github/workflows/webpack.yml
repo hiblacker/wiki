@@ -58,5 +58,5 @@ jobs:
                   SOURCE: 'lab/'
                   REMOTE_HOST: 118.89.219.85
                   REMOTE_USER: ubuntu
-                  REMOTE_PORT: 13022
+                  REMOTE_PORT: 13022 -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedKeyTypes=+ssh-rsa
                   TARGET: /home/ubuntu # 服务器目标路径
