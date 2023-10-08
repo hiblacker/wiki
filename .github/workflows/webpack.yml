@@ -58,5 +58,5 @@ jobs:
                   SOURCE: 'lab/'
                   REMOTE_HOST: ${{ env.SERVER_HOST }}
                   REMOTE_USER: ${{ env.SERVER_USER }}
-                  REMOTE_PORT: ${{ secrets.SERVER_PORT }} -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedKeyTypes=+ssh-rsa
+                  REMOTE_PORT: ${{ env.SERVER_PORT }} -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedKeyTypes=+ssh-rsa
                   TARGET: /home/${{ env.SERVER_USER }} # 服务器目标路径
