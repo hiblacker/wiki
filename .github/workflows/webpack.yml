@@ -17,7 +17,7 @@ env:
 # jobs表示执行的一项或多项任务
 jobs:
     build: # 任务的job_id，具体名称自定义，这里build代表打包
-        runs-on: ubuntu-latest # runs-on字段指定运行所需要的虚拟机环境。注意：这个是必填字段
+        runs-on: ubuntu-20.04 # runs-on字段指定运行所需要的虚拟机环境。注意：这个是必填字段
         steps:
             - uses: actions/checkout@master
 
@@ -42,12 +42,12 @@ jobs:
                       ${{ runner.os }}-
 
             # 装依赖
-            - name: Install
-              run: yarn
+            # - name: Install
+            #   run: yarn
 
-            # 打包
-            - name: Build
-              run: yarn build
+            # # 打包
+            # - name: Build
+            #   run: yarn build
 
             # 上传打包资源
             - name: Deploy
@@ -55,7 +55,7 @@ jobs:
               env:
                   SSH_PRIVATE_KEY: ${{ env.SERVER_PRIVATE_KEY }}
                   ARGS: '-avz --delete --port=${{ env.SERVER_PORT }}'
-                  SOURCE: 'docs/.vuepress/dist/'
+                  SOURCE: 'lab/'
                   REMOTE_HOST: ${{ env.SERVER_HOST }}
                   REMOTE_USER: ${{ env.SERVER_USER }}
                   TARGET: /home/note # 服务器目标路径
